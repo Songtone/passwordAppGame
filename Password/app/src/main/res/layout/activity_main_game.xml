@@ -9,6 +9,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
+    android:focusableInTouchMode="true"
     tools:context="com.example.songt.password.MainGame">
 
     <RelativeLayout
@@ -154,7 +155,7 @@
         android:layout_alignParentStart="true">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/editText1"
             android:layout_width="150dp"
             android:layout_height="50dp" />
 
@@ -172,7 +173,7 @@
             android:layout_height="50dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/editText" />
+            android:layout_below="@+id/editText1" />
 
         <EditText
             android:id="@+id/editText4"
@@ -269,20 +270,19 @@
         android:layout_height="match_parent">
 
         <Button
-            android:layout_width="100dp"
+            android:id="@+id/resetWordButton"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:text="Reset"
-            android:id="@+id/resetButton" />
+            android:text="Reset Word" />
 
         <Button
             android:id="@+id/hideButton"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/resetButton"
-            android:layout_alignBottom="@+id/resetButton"
+            android:layout_alignBottom="@+id/resetWordButton"
             android:layout_centerHorizontal="true"
             android:text="Hide Word" />
 
@@ -290,8 +290,7 @@
             android:id="@+id/nextButton"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/resetButton"
-            android:layout_alignBottom="@+id/resetButton"
+            android:layout_alignBottom="@+id/resetWordButton"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:text="NEXT" />

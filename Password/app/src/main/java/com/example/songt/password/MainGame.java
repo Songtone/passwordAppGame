@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -37,7 +38,22 @@ public class MainGame extends AppCompatActivity {
 
     //reset game section variables
 
-    private Button mResetButton;
+    private Button mResetWordButton;
+
+    private EditText mEditText1;
+    private EditText mEditText2;
+    private EditText mEditText3;
+    private EditText mEditText4;
+    private EditText mEditText5;
+    private EditText mEditText6;
+    private EditText mEditText7;
+    private EditText mEditText8;
+    private EditText mEditText9;
+    private EditText mEditText10;
+    private EditText mEditText11;
+    private EditText mEditText12;
+    private EditText mEditText13;
+    private EditText mEditText14;
 
     //hide word section variables
     private Button mHideButton;
@@ -61,9 +77,25 @@ public class MainGame extends AppCompatActivity {
 
         mNextButton = (Button) findViewById(R.id.nextButton);
 
-        mResetButton = (Button) findViewById(R.id.resetButton);
+        mResetWordButton = (Button) findViewById(R.id.resetWordButton);
 
         mHideButton = (Button) findViewById(R.id.hideButton);
+
+        mEditText1 = (EditText) findViewById(R.id.editText1);
+        mEditText2 = (EditText) findViewById(R.id.editText2);
+        mEditText3 = (EditText) findViewById(R.id.editText3);
+        mEditText4 = (EditText) findViewById(R.id.editText4);
+        mEditText5 = (EditText) findViewById(R.id.editText5);
+        mEditText6 = (EditText) findViewById(R.id.editText6);
+        mEditText7 = (EditText) findViewById(R.id.editText7);
+        mEditText8 = (EditText) findViewById(R.id.editText8);
+        mEditText9 = (EditText) findViewById(R.id.editText9);
+        mEditText10 = (EditText) findViewById(R.id.editText10);
+        mEditText11 = (EditText) findViewById(R.id.editText11);
+        mEditText12 = (EditText) findViewById(R.id.editText12);
+        mEditText13 = (EditText) findViewById(R.id.editText13);
+        mEditText14 = (EditText) findViewById(R.id.editText14);
+
 
         updateWordView();
 
@@ -117,14 +149,42 @@ public class MainGame extends AppCompatActivity {
                 mRoundNumber = mRoundNumber+1;
                 updateRoundNumber(mRoundNumber);
                 updateWordView();
+                mEditText1.setText("");
+                mEditText2.setText("");
+                mEditText3.setText("");
+                mEditText4.setText("");
+                mEditText5.setText("");
+                mEditText6.setText("");
+                mEditText7.setText("");
+                mEditText8.setText("");
+                mEditText9.setText("");
+                mEditText10.setText("");
+                mEditText11.setText("");
+                mEditText12.setText("");
+                mEditText13.setText("");
+                mEditText14.setText("");
             }
         });
 
         //reset section ----------------------------------------------------------------------------------------------
-        mResetButton.setOnClickListener(new View.OnClickListener() {
+        mResetWordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                updateWordView();
+                mEditText1.setText("");
+                mEditText2.setText("");
+                mEditText3.setText("");
+                mEditText4.setText("");
+                mEditText5.setText("");
+                mEditText6.setText("");
+                mEditText7.setText("");
+                mEditText8.setText("");
+                mEditText9.setText("");
+                mEditText10.setText("");
+                mEditText11.setText("");
+                mEditText12.setText("");
+                mEditText13.setText("");
+                mEditText14.setText("");
             }
         });
 
@@ -147,12 +207,15 @@ public class MainGame extends AppCompatActivity {
         Random r = new Random();
         mWordNumber = r.nextInt(mWordBank.wordBankLength() - 1) +1;
         mWordView.setText(mWordBank.getWord(mWordNumber));
+        mWordHidden = false;
     }
     private void hideWordView(){
         mWordView.setText("");
+        mWordHidden = false;
     }
     private void unhideWordView(){
         mWordView.setText(mWordBank.getWord(mWordNumber));
+        mWordHidden = false;
     }
     private void updateRoundNumber(int roundNumber){mRoundNumberView.setText(""+mRoundNumber);}
     private void updateBlueScore(int bluePoint){mBlueScoreView.setText(""+mBlueScore);}
