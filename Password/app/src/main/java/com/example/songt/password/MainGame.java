@@ -195,10 +195,12 @@ public class MainGame extends AppCompatActivity {
                 if(mWordHidden == false){
                     hideWordView();
                     mWordHidden = true;
+                    mHideButton.setText("UNHIDE WORD");
                 }
                 else if(mWordHidden == true){
                     unhideWordView();
                     mWordHidden = false;
+                    mHideButton.setText("HIDE WORD");
                 }
             }
         });
