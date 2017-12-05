@@ -35,6 +35,14 @@ public class MainGame extends AppCompatActivity {
     private int mRoundNumber = 1;
     private int mWordNumber;
 
+    //reset game section variables
+
+    private Button mResetButton;
+
+    //hide word section variables
+    private Button mHideButton;
+
+    private boolean mWordHidden = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +60,10 @@ public class MainGame extends AppCompatActivity {
         mPlusRedScore = (Button) findViewById(R.id.plusRedScore);
 
         mNextButton = (Button) findViewById(R.id.nextButton);
+
+        mResetButton = (Button) findViewById(R.id.resetButton);
+
+        mHideButton = (Button) findViewById(R.id.hideButton);
 
         updateWordView();
 
@@ -97,6 +109,8 @@ public class MainGame extends AppCompatActivity {
                 updateRedScore(mRedScore);
             }
         });
+
+        //next section --------------------------------------------------------------------------------------------
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,10 +120,38 @@ public class MainGame extends AppCompatActivity {
             }
         });
 
+        //reset section ----------------------------------------------------------------------------------------------
+        mResetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        //hide word section -------------------------------------------------------------------------------------------
+        mHideButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mWordHidden == false){
+                    hideWordView();
+                    mWordHidden = true;
+                }
+                else if(mWordHidden == true){
+                    unhideWordView();
+                    mWordHidden = false;
+                }
+            }
+        });
     }
     private void updateWordView(){
         Random r = new Random();
         mWordNumber = r.nextInt(mWordBank.wordBankLength() - 1) +1;
+        mWordView.setText(mWordBank.getWord(mWordNumber));
+    }
+    private void hideWordView(){
+        mWordView.setText("");
+    }
+    private void unhideWordView(){
         mWordView.setText(mWordBank.getWord(mWordNumber));
     }
     private void updateRoundNumber(int roundNumber){mRoundNumberView.setText(""+mRoundNumber);}
