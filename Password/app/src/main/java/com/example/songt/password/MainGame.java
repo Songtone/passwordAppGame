@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.Random;
+
 public class MainGame extends AppCompatActivity {
 
     private WordBank mWordBank = new WordBank();
@@ -31,6 +33,7 @@ public class MainGame extends AppCompatActivity {
     private Button mNextButton;
 
     private int mRoundNumber = 1;
+    private int mWordNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,8 @@ public class MainGame extends AppCompatActivity {
         mPlusRedScore = (Button) findViewById(R.id.plusRedScore);
 
         mNextButton = (Button) findViewById(R.id.nextButton);
+
+        updateWordView();
 
         //Scoreboard Section ---------------------------------------------------------------------------------------
 
@@ -92,7 +97,22 @@ public class MainGame extends AppCompatActivity {
                 updateRedScore(mRedScore);
             }
         });
+        mNextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mRoundNumber = mRoundNumber+1;
+                updateRoundNumber(mRoundNumber);
+                updateWordView();
+            }
+        });
+
     }
+    private void updateWordView(){
+        Random r = new Random();
+        mWordNumber = r.nextInt(mWordBank.wordBankLength() - 1) +1;
+        mWordView.setText(mWordBank.getWord(mWordNumber));
+    }
+    private void updateRoundNumber(int roundNumber){mRoundNumberView.setText(""+mRoundNumber);}
     private void updateBlueScore(int bluePoint){mBlueScoreView.setText(""+mBlueScore);}
     private void updateRedScore(int redPoint){mRedScoreView.setText(""+mRedScore);}
 }
