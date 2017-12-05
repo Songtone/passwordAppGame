@@ -203,6 +203,8 @@ public class MainGame extends AppCompatActivity {
             }
         });
     }
+
+    //functions being used -----------------------------------------------------------------------------------------------
     private void updateWordView(){
         Random r = new Random();
         mWordNumber = r.nextInt(mWordBank.wordBankLength() - 1) +1;
